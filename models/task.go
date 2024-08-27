@@ -4,7 +4,7 @@ import (
 	"time"
 )
 
-// Структура для передачи данных между апи и бд
+// Task - структура для передачи данных между апи и бд
 type Task struct {
 	ID          int       `json:"id"`
 	Title       string    `json:"title"`

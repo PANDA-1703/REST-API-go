@@ -10,7 +10,7 @@ import (
 	"github.com/gorilla/mux"
 )
 
-// Забираем конкретную задачу по id
+// GetTask - забираем конкретную задачу по id
 func GetTask(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 	id, err := strconv.Atoi(params["id"])

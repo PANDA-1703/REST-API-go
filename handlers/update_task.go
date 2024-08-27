@@ -11,7 +11,7 @@ import (
 	"github.com/gorilla/mux"
 )
 
-// Обновление задачи
+// UpdateTask - обновление задачи
 func UpdateTask(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 	id, err := strconv.Atoi(params["id"])

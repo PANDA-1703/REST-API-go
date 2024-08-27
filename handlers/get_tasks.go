@@ -8,7 +8,7 @@ import (
 	"rest-api/models"
 )
 
-// Получение списка задач в формате JSON
+// GetTasks - получение списка задач в формате JSON
 func GetTasks(w http.ResponseWriter, r *http.Request) {
 	rows, err := db.Pool.Query(r.Context(), "SELECT id, title, description, due_date, created_at, updated_at FROM tasks")
 	if err != nil {

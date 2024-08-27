@@ -13,9 +13,10 @@ import (
 	"github.com/gorilla/mux"
 )
 
+// Config содержит параметры подключения к бд
 type Config struct {
-	DATABASE_URL string `json:"database_url"`
-	Port         string `json:"port"`
+	DatabaseURL string `json:"database_url"`
+	Port        string `json:"port"`
 }
 
 func main() {
@@ -35,7 +36,7 @@ func main() {
 		log.Fatalf("Ошибка парсинга файла конфига: %v\n", err)
 	}
 
-	os.Setenv("DATABASE_URL", config.DATABASE_URL)
+	os.Setenv("DATABASE_URL", config.DatabaseURL)
 
 	// Подключение к бд
 	db.Init()

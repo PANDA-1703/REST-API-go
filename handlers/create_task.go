@@ -10,7 +10,7 @@ import (
 	"rest-api/models"
 )
 
-// Создание задачи
+// CreateTask - создание задачи
 func CreateTask(w http.ResponseWriter, r *http.Request) {
 	var task models.Task
 	err := json.NewDecoder(r.Body).Decode(&task)

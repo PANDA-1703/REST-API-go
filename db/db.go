@@ -8,10 +8,10 @@ import (
 	"github.com/jackc/pgx/v5/pgxpool"
 )
 
-// Глобальный пул коннекта к бд
+// Pool - лобальный пул коннекта к бд
 var Pool *pgxpool.Pool
 
-// Создание таблицы
+// CreateTable создаёт таблицу tasks, если её не существует
 func CreateTable() {
 	query := `
 	CREATE TABLE IF NOT EXISTS tasks(
@@ -31,6 +31,7 @@ func CreateTable() {
 	log.Println("Таблица tasks создана/существует.")
 }
 
+// Init - нициализация подключения к бд
 func Init() {
 	var err error
 

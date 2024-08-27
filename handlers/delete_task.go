@@ -8,7 +8,7 @@ import (
 	"github.com/gorilla/mux"
 )
 
-// Удаление задачи по id
+// DeleteTask - удаление задачи по id
 func DeleteTask(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 	id, err := strconv.Atoi(params["id"])
