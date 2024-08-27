@@ -1,15 +1,42 @@
 package main
 
 import (
+	"encoding/json"
+	"flag"
+	"io/ioutil"
 	"log"
 	"net/http"
+	"os"
 	"rest-api/db"
 	"rest-api/handlers"
 
 	"github.com/gorilla/mux"
 )
 
+type Config struct {
+	DATABASE_URL string `json:"database_url"`
+	Port         string `json:"port"`
+}
+
 func main() {
+	// Чтение из файла конфигурации
+	var configFile string
+	flag.StringVar(&configFile, "config", "config.json", "Путь до файла конфига")
+	flag.Parse()
+
+	configData, err := ioutil.ReadFile(configFile)
+	if err != nil {
+		log.Fatalf("Ошибка чтения файла конфига: %v\n", err)
+	}
+
+	var config Config
+	err = json.Unmarshal(configData, &config)
+	if err != nil {
+		log.Fatalf("Ошибка парсинга файла конфига: %v\n", err)
+	}
+
+	os.Setenv("DATABASE_URL", config.DATABASE_URL)
+
 	// Подключение к бд
 	db.Init()
 	defer db.Pool.Close()

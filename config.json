@@ -1,0 +1,4 @@
+{
+    "database_url": "postgresql://panda:0000@localhost:5432/restapi",
+    "port": "8080"
+}
